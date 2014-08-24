@@ -39,6 +39,8 @@ public class PlayerBase : OmegaObject
 
     private void SpawnMissile(GameObject spawner)
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound("launch");
+
         Vector3 spawnPosition = new Vector3(
             spawner.transform.position.x,
             spawner.transform.position.y,

@@ -8,14 +8,29 @@ public class Star : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        LeanTween.rotateZ(gameObject, transform.eulerAngles.z + rotateRange, 1f)
-            .setEase(LeanTweenType.easeInOutQuad)
-            .setLoopPingPong();       
+        StartWobble();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!LeanTween.isTweening(gameObject))
+        {
+            Debug.Log("Star wasn't tweening, starting tween");
+            StartWobble();
+        }
 	
 	}
+
+    public void StartWobble()
+    {
+        Debug.Log("Starting star wobble :)");
+
+        LeanTween.cancel(gameObject);
+
+        LeanTween.rotateZ(gameObject, transform.eulerAngles.z + rotateRange, 1f)
+            .setEase(LeanTweenType.easeInOutQuad)
+            .setLoopPingPong();       
+    }
 }

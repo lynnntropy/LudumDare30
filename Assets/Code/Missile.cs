@@ -92,6 +92,8 @@ public class Missile : OmegaObject {
 
     void Explode()
     {
+        gameManager.PlaySound("explosion");
+
         missileExplosion.transform.position = transform.position;
         missileExplosion.GetComponent<ParticleSystem>().Play();
 

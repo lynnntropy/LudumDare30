@@ -28,6 +28,8 @@ public class RightPortal : BasePortal
     {
         float animationTime = 0.2f;
 
+        missile.transform.Find("Trail").gameObject.GetComponent<ParticleSystem>().startColor = new Color(0, 0, 0, 0);
+
         LeanTween.alpha(missile, 0f, animationTime)
             .setEase(LeanTweenType.easeOutQuad)
             .setOnComplete(delegate()
@@ -49,6 +51,7 @@ public class RightPortal : BasePortal
             missile.transform.eulerAngles = newRotation;
 
             LeanTween.alpha(missile, 1f, animationTime).setEase(LeanTweenType.easeOutQuad);
+            missile.transform.Find("Trail").gameObject.GetComponent<ParticleSystem>().startColor = Color.white;
 
         });
         
